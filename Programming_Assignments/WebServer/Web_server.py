@@ -16,6 +16,8 @@ while True:
     print('Ready to serve...')
 
     connectionSocket, addr = serverSocket.accept() #Fill n start         #Fill in end
+    #print(connectionSocket)
+    #print(addr)
     try:
         message = connectionSocket.recv(1024).decode()#Fill in start        #Fill in end
         filename = message.split()[1] # eg: Get /filename HTTP/1.1\r\n   get /filename
@@ -46,16 +48,16 @@ while True:
     except IOError:
     #Send response message for file not found
 
-    #Fill in start
+        parts = message.split()
+        # 获取HTTP版本
+        http_version = parts[2] if len(parts) > 2 else 'HTTP/1.1'
         header = '{} 404 Not Found\r\n\r\n'.format(http_version)
         connectionSocket.send(header.encode())
 
-    #Fill in end
     #Close client socket
-    #Fill in start
 
     connectionSocket.close()
 
-    #Fill in end
 serverSocket.close()
 sys.exit()#Terminate the program after sending the corresponding dat
+

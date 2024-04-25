@@ -168,7 +168,7 @@ class Client:
 			
 			# Keep track of the sent request.
 			# self.requestSent = ...
-		
+
 		# Pause request
 		elif requestCode == self.PAUSE and self.state == self.PLAYING:
 			# Update RTSP sequence number.
